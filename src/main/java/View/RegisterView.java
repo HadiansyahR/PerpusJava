@@ -4,6 +4,9 @@
  */
 package View;
 
+import Controller.UserController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dreamvalian
@@ -13,8 +16,12 @@ public class RegisterView extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    UserController userCon = new UserController();
+    LoginView loginView = new LoginView();
+    
     public RegisterView() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -34,11 +41,9 @@ public class RegisterView extends javax.swing.JFrame {
         EmailForm = new javax.swing.JTextField();
         PasswordTitle = new javax.swing.JLabel();
         PasswordForm = new javax.swing.JPasswordField();
-        RememberMeCheckbox = new javax.swing.JCheckBox();
-        ForgotPassword = new javax.swing.JLabel();
-        LoginButton = new javax.swing.JButton();
-        EmailForm1 = new javax.swing.JTextField();
-        EmailTitle1 = new javax.swing.JLabel();
+        AggreementCheckbox = new javax.swing.JCheckBox();
+        SignInText = new javax.swing.JLabel();
+        CreateButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,7 +55,7 @@ public class RegisterView extends javax.swing.JFrame {
         Leftside.setPreferredSize(new java.awt.Dimension(256, 384));
 
         Headline.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        Headline.setText("Sign up with your email");
+        Headline.setText("Sign up");
 
         Subtitle.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
         Subtitle.setForeground(new java.awt.Color(145, 145, 145));
@@ -82,43 +87,35 @@ public class RegisterView extends javax.swing.JFrame {
             }
         });
 
-        RememberMeCheckbox.setBackground(new java.awt.Color(249, 249, 249));
-        RememberMeCheckbox.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
-        RememberMeCheckbox.setForeground(new java.awt.Color(194, 200, 204));
-        RememberMeCheckbox.setText("I agree to the Terms of Service and Privacy Policy");
-        RememberMeCheckbox.setBorder(null);
-        RememberMeCheckbox.addActionListener(new java.awt.event.ActionListener() {
+        AggreementCheckbox.setBackground(new java.awt.Color(249, 249, 249));
+        AggreementCheckbox.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        AggreementCheckbox.setForeground(new java.awt.Color(194, 200, 204));
+        AggreementCheckbox.setText("I agree to the Terms of Service and Privacy Policy");
+        AggreementCheckbox.setBorder(null);
+        AggreementCheckbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RememberMeCheckboxActionPerformed(evt);
+                AggreementCheckboxActionPerformed(evt);
             }
         });
 
-        ForgotPassword.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
-        ForgotPassword.setForeground(new java.awt.Color(71, 103, 237));
-        ForgotPassword.setText(" Sign in");
-
-        LoginButton.setBackground(new java.awt.Color(71, 103, 237));
-        LoginButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        LoginButton.setForeground(new java.awt.Color(249, 249, 249));
-        LoginButton.setText("Create an account");
-        LoginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
+        SignInText.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        SignInText.setForeground(new java.awt.Color(71, 103, 237));
+        SignInText.setText(" Sign in");
+        SignInText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SignInTextMouseClicked(evt);
             }
         });
 
-        EmailForm1.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
-        EmailForm1.setForeground(new java.awt.Color(194, 200, 204));
-        EmailForm1.setText("Enter your email");
-        EmailForm1.addActionListener(new java.awt.event.ActionListener() {
+        CreateButton.setBackground(new java.awt.Color(71, 103, 237));
+        CreateButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        CreateButton.setForeground(new java.awt.Color(249, 249, 249));
+        CreateButton.setText("Create an account");
+        CreateButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EmailForm1ActionPerformed(evt);
+                CreateButtonActionPerformed(evt);
             }
         });
-
-        EmailTitle1.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
-        EmailTitle1.setForeground(new java.awt.Color(194, 200, 204));
-        EmailTitle1.setText("Email");
 
         javax.swing.GroupLayout LeftsideLayout = new javax.swing.GroupLayout(Leftside);
         Leftside.setLayout(LeftsideLayout);
@@ -128,18 +125,17 @@ public class RegisterView extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PasswordTitle)
-                    .addComponent(Headline)
                     .addComponent(EmailTitle)
-                    .addComponent(EmailTitle1)
-                    .addGroup(LeftsideLayout.createSequentialGroup()
-                        .addComponent(Subtitle)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ForgotPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(EmailForm)
-                    .addComponent(EmailForm1)
                     .addComponent(PasswordForm)
-                    .addComponent(RememberMeCheckbox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LoginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(AggreementCheckbox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CreateButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LeftsideLayout.createSequentialGroup()
+                            .addComponent(Subtitle)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(SignInText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Headline)))
                 .addGap(24, 24, 24))
         );
         LeftsideLayout.setVerticalGroup(
@@ -150,24 +146,20 @@ public class RegisterView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Subtitle)
-                    .addComponent(ForgotPassword))
+                    .addComponent(SignInText))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(EmailTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(EmailForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmailTitle1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(EmailForm1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PasswordTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PasswordForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(RememberMeCheckbox)
+                .addComponent(AggreementCheckbox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LoginButton)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addComponent(CreateButton)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -176,7 +168,7 @@ public class RegisterView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Leftside, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
+                .addComponent(Leftside, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,21 +193,35 @@ public class RegisterView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailFormActionPerformed
 
-    private void RememberMeCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RememberMeCheckboxActionPerformed
+    private void AggreementCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AggreementCheckboxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_RememberMeCheckboxActionPerformed
+    }//GEN-LAST:event_AggreementCheckboxActionPerformed
 
     private void PasswordFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFormActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordFormActionPerformed
 
-    private void EmailForm1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailForm1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_EmailForm1ActionPerformed
+    private void CreateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateButtonActionPerformed
+       
+        if(AggreementCheckbox.isSelected()){
+            boolean status = userCon.Register(EmailForm.getText(), String.valueOf(PasswordForm.getPassword()));
+            if(status){
+                JOptionPane.showMessageDialog(null, "Register Success", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+                dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Username already taken", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            }            
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "You must agree to the End User License Agreement terms in order to continue", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_CreateButtonActionPerformed
 
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_LoginButtonActionPerformed
+    private void SignInTextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignInTextMouseClicked
+        dispose();
+        loginView.setVisible(true);
+    }//GEN-LAST:event_SignInTextMouseClicked
 
     /**
      * @param args the command line arguments
@@ -260,17 +266,15 @@ public class RegisterView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox AggreementCheckbox;
+    private javax.swing.JButton CreateButton;
     private javax.swing.JTextField EmailForm;
-    private javax.swing.JTextField EmailForm1;
     private javax.swing.JLabel EmailTitle;
-    private javax.swing.JLabel EmailTitle1;
-    private javax.swing.JLabel ForgotPassword;
     private javax.swing.JLabel Headline;
     private javax.swing.JPanel Leftside;
-    private javax.swing.JButton LoginButton;
     private javax.swing.JPasswordField PasswordForm;
     private javax.swing.JLabel PasswordTitle;
-    private javax.swing.JCheckBox RememberMeCheckbox;
+    private javax.swing.JLabel SignInText;
     private javax.swing.JLabel Subtitle;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
