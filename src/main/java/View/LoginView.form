@@ -90,11 +90,7 @@
                               <Component id="EmailTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="EmailForm" alignment="0" max="32767" attributes="0"/>
                               <Component id="PasswordTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="RememberMeCheckbox" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="ForgotPassword" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="ShowPassCheckbox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="PasswordForm" alignment="0" max="32767" attributes="0"/>
                               <Component id="LoginButton" alignment="0" max="32767" attributes="0"/>
                               <Component id="RegisterButton" alignment="0" min="-2" pref="215" max="-2" attributes="0"/>
@@ -122,15 +118,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="PasswordForm" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="RememberMeCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="ForgotPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="ShowPassCheckbox" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="LoginButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="RegisterButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="72" max="32767" attributes="0"/>
+                      <EmptySpace pref="97" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -213,7 +206,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordFormActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JCheckBox" name="RememberMeCheckbox">
+            <Component class="javax.swing.JCheckBox" name="ShowPassCheckbox">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="f9" green="f9" red="f9" type="rgb"/>
@@ -224,25 +217,14 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="c8" red="c2" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Remember me"/>
+                <Property name="text" type="java.lang.String" value="Show Password"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RememberMeCheckboxActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ShowPassCheckboxActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="ForgotPassword">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="10" style="0"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ed" green="67" red="47" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Forgot Password?"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="LoginButton">
               <Properties>
@@ -257,6 +239,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sign in"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="RegisterButton">
               <Properties>
@@ -311,9 +296,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                      <EmptySpace pref="128" max="32767" attributes="0"/>
                       <Component id="Logo" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                      <EmptySpace pref="128" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -329,11 +314,6 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="Logo">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Sekolah Agama\Season 3\ISB-205 Object Oriented Programming (Praktikum)\PerpusJava\src\assets\img\Right Column\Graphic\Logo\Dark w Color.png"/>
-                </Property>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

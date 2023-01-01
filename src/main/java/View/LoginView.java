@@ -4,6 +4,9 @@
  */
 package View;
 
+import Controller.UserController;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Dreamvalian
@@ -13,10 +16,24 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    
+    UserController userCon = new UserController();
+    
+    
     public LoginView() {
         initComponents();
+        setLocationRelativeTo(null);
     }
-
+    
+    public void showPassword(){
+        if(ShowPassCheckbox.isSelected()){
+            PasswordForm.setEchoChar((char)0);
+            ShowPassCheckbox.setText("Hide Password");
+        }else{
+            PasswordForm.setEchoChar('*');
+            ShowPassCheckbox.setText("Show Password");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,8 +52,7 @@ public class LoginView extends javax.swing.JFrame {
         EmailForm = new javax.swing.JTextField();
         PasswordTitle = new javax.swing.JLabel();
         PasswordForm = new javax.swing.JPasswordField();
-        RememberMeCheckbox = new javax.swing.JCheckBox();
-        ForgotPassword = new javax.swing.JLabel();
+        ShowPassCheckbox = new javax.swing.JCheckBox();
         LoginButton = new javax.swing.JButton();
         RegisterButton = new javax.swing.JButton();
         Rightside = new javax.swing.JPanel();
@@ -87,25 +103,26 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
-        RememberMeCheckbox.setBackground(new java.awt.Color(249, 249, 249));
-        RememberMeCheckbox.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
-        RememberMeCheckbox.setForeground(new java.awt.Color(194, 200, 204));
-        RememberMeCheckbox.setText("Remember me");
-        RememberMeCheckbox.setBorder(null);
-        RememberMeCheckbox.addActionListener(new java.awt.event.ActionListener() {
+        ShowPassCheckbox.setBackground(new java.awt.Color(249, 249, 249));
+        ShowPassCheckbox.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        ShowPassCheckbox.setForeground(new java.awt.Color(194, 200, 204));
+        ShowPassCheckbox.setText("Show Password");
+        ShowPassCheckbox.setBorder(null);
+        ShowPassCheckbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RememberMeCheckboxActionPerformed(evt);
+                ShowPassCheckboxActionPerformed(evt);
             }
         });
-
-        ForgotPassword.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
-        ForgotPassword.setForeground(new java.awt.Color(71, 103, 237));
-        ForgotPassword.setText("Forgot Password?");
 
         LoginButton.setBackground(new java.awt.Color(71, 103, 237));
         LoginButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         LoginButton.setForeground(new java.awt.Color(249, 249, 249));
         LoginButton.setText("Sign in");
+        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginButtonActionPerformed(evt);
+            }
+        });
 
         RegisterButton.setBackground(new java.awt.Color(249, 249, 249));
         RegisterButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -136,10 +153,7 @@ public class LoginView extends javax.swing.JFrame {
                         .addComponent(EmailTitle)
                         .addComponent(EmailForm)
                         .addComponent(PasswordTitle)
-                        .addGroup(LeftsideLayout.createSequentialGroup()
-                            .addComponent(RememberMeCheckbox)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ForgotPassword))
+                        .addComponent(ShowPassCheckbox)
                         .addComponent(PasswordForm)
                         .addComponent(LoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -163,30 +177,26 @@ public class LoginView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PasswordForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RememberMeCheckbox)
-                    .addComponent(ForgotPassword))
+                .addComponent(ShowPassCheckbox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LoginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         Rightside.setBackground(new java.awt.Color(35, 35, 35));
         Rightside.setForeground(new java.awt.Color(35, 35, 35));
         Rightside.setPreferredSize(new java.awt.Dimension(256, 384));
 
-        Logo.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Right Column\\Graphic\\Logo\\Dark w Color.png")); // NOI18N
-
         javax.swing.GroupLayout RightsideLayout = new javax.swing.GroupLayout(Rightside);
         Rightside.setLayout(RightsideLayout);
         RightsideLayout.setHorizontalGroup(
             RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightsideLayout.createSequentialGroup()
-                .addContainerGap(85, Short.MAX_VALUE)
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addComponent(Logo)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
         RightsideLayout.setVerticalGroup(
             RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,9 +241,9 @@ public class LoginView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailFormActionPerformed
 
-    private void RememberMeCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RememberMeCheckboxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RememberMeCheckboxActionPerformed
+    private void ShowPassCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShowPassCheckboxActionPerformed
+        showPassword();
+    }//GEN-LAST:event_ShowPassCheckboxActionPerformed
 
     private void PasswordFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFormActionPerformed
         // TODO add your handling code here:
@@ -242,6 +252,17 @@ public class LoginView extends javax.swing.JFrame {
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RegisterButtonActionPerformed
+
+    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+        boolean status = userCon.Login(EmailForm.getText(), String.valueOf(PasswordForm.getPassword()));
+        
+        if(status){
+            JOptionPane.showMessageDialog(null, "Login Berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Username atau Password yang anda masukkan salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_LoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -284,7 +305,6 @@ public class LoginView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField EmailForm;
     private javax.swing.JLabel EmailTitle;
-    private javax.swing.JLabel ForgotPassword;
     private javax.swing.JLabel Header;
     private javax.swing.JLabel Headline;
     private javax.swing.JPanel Leftside;
@@ -293,8 +313,8 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JPasswordField PasswordForm;
     private javax.swing.JLabel PasswordTitle;
     private javax.swing.JButton RegisterButton;
-    private javax.swing.JCheckBox RememberMeCheckbox;
     private javax.swing.JPanel Rightside;
+    private javax.swing.JCheckBox ShowPassCheckbox;
     private javax.swing.JLabel Subtitle;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

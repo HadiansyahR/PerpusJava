@@ -11,6 +11,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 import Model.User;
+import View.BookListView;
+//import View.LoginView;
+import View.ManageBookView;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,6 +25,11 @@ public class UserController {
     Scanner sc = new Scanner(System.in);
     ConnectionManager conMan = new ConnectionManager();
     Connection con = conMan.LogOn();
+    
+//    LoginView loginView = new LoginView();
+    BookListView bookListView = new BookListView();
+    ManageBookView manageBookView = new ManageBookView();
+    
     String query = "";
   
     public boolean Login(String username, String password){
@@ -31,18 +41,47 @@ public class UserController {
             ResultSet rs = stm.executeQuery(query);
             
             while(rs.next()){
-                loginStatus = username.equals(rs.getString("username")) && password.equals(rs.getString("password"));
+                if((username.equals(rs.getString("username")) && password.equals(rs.getString("password"))) 
+                        && (rs.getString("user_id").equals("U000"))){
+                    
+                    loginStatus = true;
+                    manageBookView.setVisible(true);
+                    
+                }else if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))){
+                    loginStatus = true;
+                    bookListView.setVisible(true);
+                    
+                }
+                else{
+                    loginStatus = false;
+                }
             }
-            
-            return loginStatus;
+                        
         }catch (SQLException e){
             e.getMessage();
-            return loginStatus;
         }
+        
+        return loginStatus;
     }
     
     public boolean Register(String username, String password){
         Boolean registerStatus = false;
+        
+        query = "SELECT * FROM user";
+        List<User> listUser = new ArrayList<User>();
+        try{
+            Statement stm = con.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            
+            
+            while(rs.next()){
+                User objUser = new User(rs.getString("user_id"), rs.getString("username"), rs.getString("password"));
+                listUser.add(objUser);
+            }
+        }catch (SQLException e){
+            e.getMessage();
+        }
+        
         query = "SELECT COUNT(*) FROM user";
         int dataCount = 0;
         try{
@@ -51,12 +90,45 @@ public class UserController {
             while(rs.next()){
                 dataCount = rs.getInt("COUNT(*)");
             }
-            System.out.println(dataCount);
             
-            return registerStatus;
         }catch (SQLException e){
             e.getMessage();
-            return registerStatus;
         }
+                
+        String user_id;
+        int rowAffected = 0;
+//            System.out.println(dataCount);
+        if(dataCount < 10){
+            user_id = "U00"+(dataCount);
+        }else if(dataCount < 100){
+            user_id = "U0"+(dataCount);
+        }else{
+            user_id = "U"+(dataCount);
+        }
+        
+        
+        for (User user : listUser){
+            if(user.getUsername().equals(username)){
+                System.out.println("Username sudah ada");
+                registerStatus = false;
+            }
+            else{
+                query = "INSERT INTO user VALUES('"+user_id+"', '"+username+"', '"+password+"')";
+                try{
+                    Statement stm = con.createStatement();
+                    rowAffected = stm.executeUpdate(query);
+
+                    if(rowAffected > 0){
+                        registerStatus = true;
+                    }else{
+                        registerStatus = false;
+                    }   
+                }catch (SQLException e){
+                    e.getMessage();
+        //            return registerStatus;
+                }
+            }
+        }
+        return registerStatus;
     }
 }
