@@ -22,6 +22,8 @@ public class ManageBookView extends javax.swing.JFrame {
     public ManageBookView() {
 
         initComponents();
+        cbGenre.setSelectedItem(null);
+        
         sp = new SideMenuPanel(this);
         sp.setMain(mainPanel);
         sp.setSide(sidebar);
@@ -61,7 +63,7 @@ public class ManageBookView extends javax.swing.JFrame {
     private void clearData(){
         txtID.setText("");
         txtBookName.setText("");
-        txtGenre.setText("");
+        cbGenre.setSelectedItem(null);
         txtQuantity.setText("");
     }
 
@@ -95,7 +97,7 @@ public class ManageBookView extends javax.swing.JFrame {
         clearButton = new javax.swing.JButton();
         createButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbGenre = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,7 +107,6 @@ public class ManageBookView extends javax.swing.JFrame {
 
         Borrowbook.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Borrowbook.setForeground(new java.awt.Color(195, 217, 233));
-        Borrowbook.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Email fill - 26px icon.png")); // NOI18N
         Borrowbook.setBorderPainted(false);
         Borrowbook.setContentAreaFilled(false);
         Borrowbook.setFocusPainted(false);
@@ -125,7 +126,6 @@ public class ManageBookView extends javax.swing.JFrame {
 
         Booklist.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Booklist.setForeground(new java.awt.Color(195, 217, 233));
-        Booklist.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Home fill - 26px icon.png")); // NOI18N
         Booklist.setText("Book List");
         Booklist.setBorderPainted(false);
         Booklist.setContentAreaFilled(false);
@@ -144,7 +144,6 @@ public class ManageBookView extends javax.swing.JFrame {
 
         hamburger.setBackground(new java.awt.Color(34, 40, 47));
         hamburger.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        hamburger.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\menu_15.png")); // NOI18N
         hamburger.setBorderPainted(false);
         hamburger.setContentAreaFilled(false);
         hamburger.setFocusPainted(false);
@@ -168,7 +167,6 @@ public class ManageBookView extends javax.swing.JFrame {
 
         Borrowbook1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Borrowbook1.setForeground(new java.awt.Color(195, 217, 233));
-        Borrowbook1.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Clock - 26px icon.png")); // NOI18N
         Borrowbook1.setBorderPainted(false);
         Borrowbook1.setContentAreaFilled(false);
         Borrowbook1.setFocusPainted(false);
@@ -390,10 +388,10 @@ public class ManageBookView extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setBackground(new java.awt.Color(249, 249, 249));
-        jComboBox1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(196, 196, 196));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbGenre.setBackground(new java.awt.Color(249, 249, 249));
+        cbGenre.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        cbGenre.setForeground(new java.awt.Color(196, 196, 196));
+        cbGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fiction", "Biography", "Education", "Technology" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -423,7 +421,7 @@ public class ManageBookView extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(txtBookName, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbGenre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(0, 34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -445,7 +443,7 @@ public class ManageBookView extends javax.swing.JFrame {
                     .addComponent(txtBookName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -487,7 +485,7 @@ public class ManageBookView extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mainPanelLayout.createSequentialGroup()
                     .addGap(33, 33, 33)
@@ -549,17 +547,17 @@ public class ManageBookView extends javax.swing.JFrame {
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
-        txtID.setEditable(false);
-        
-        int i = bookTable.getSelectedRow();
-        
-        TableModel model = bookTable.getModel();
-        
-        txtID.setText(model.getValueAt(i,0).toString());
-        txtBookName.setText(model.getValueAt(i,1).toString());
-        txtGenre.setText(model.getValueAt(i,2).toString());
-        txtQuantity.setText(model.getValueAt(i,3).toString());
-        
+//        txtID.setEditable(false);
+//        
+//        int i = bookTable.getSelectedRow();
+//        
+//        TableModel model = bookTable.getModel();
+//        
+//        txtID.setText(model.getValueAt(i,0).toString());
+//        txtBookName.setText(model.getValueAt(i,1).toString());
+//        cbGenre.setSelectedItem((String)model.getValueAt(i, 2).toString());
+//        txtQuantity.setText(model.getValueAt(i,3).toString());
+//        
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void txtBookNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookNameActionPerformed
@@ -580,7 +578,7 @@ public class ManageBookView extends javax.swing.JFrame {
         }
         
         conBook.updateBook(txtID.getText(), txtBookName.getText(), 
-                txtGenre.getText(), Integer.parseInt(txtQuantity.getText()));
+                (String) cbGenre.getSelectedItem(), Integer.parseInt(txtQuantity.getText()));
         
         JOptionPane.showMessageDialog(updateButton, "Data berhasil diupdate");
         getData();
@@ -598,7 +596,7 @@ public class ManageBookView extends javax.swing.JFrame {
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
         // TODO add your handling code here:
         boolean hasil = conBook.insertBook(txtID.getText(), 
-                txtBookName.getText(), txtGenre.getText(), 
+                txtBookName.getText(), (String) cbGenre.getSelectedItem(), 
                 Integer.parseInt(txtQuantity.getText()));
        
         if(hasil){
@@ -626,7 +624,7 @@ public class ManageBookView extends javax.swing.JFrame {
 
     private void bookTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookTableMouseClicked
         // TODO add your handling code here:
-         txtID.setEditable(false);
+//        txtID.setEditable(false);
         
         int i = bookTable.getSelectedRow();
         
@@ -634,7 +632,7 @@ public class ManageBookView extends javax.swing.JFrame {
         
         txtID.setText(model.getValueAt(i,0).toString());
         txtBookName.setText(model.getValueAt(i,1).toString());
-        txtGenre.setText(model.getValueAt(i,2).toString());
+        cbGenre.setSelectedItem((String)model.getValueAt(i, 2).toString());
         txtQuantity.setText(model.getValueAt(i,3).toString());
        
     }//GEN-LAST:event_bookTableMouseClicked
@@ -694,11 +692,11 @@ public class ManageBookView extends javax.swing.JFrame {
     private javax.swing.JButton Borrowbook;
     private javax.swing.JButton Borrowbook1;
     private javax.swing.JTable bookTable;
+    private javax.swing.JComboBox<String> cbGenre;
     private javax.swing.JButton clearButton;
     private javax.swing.JButton createButton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton hamburger;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
