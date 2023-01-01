@@ -127,9 +127,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="d9" red="c3" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Sekolah Agama\Season 3\ISB-205 Object Oriented Programming (Praktikum)\PerpusJava\src\assets\img\Email fill - 26px icon.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Borrow Book"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -160,9 +157,6 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="d9" red="c3" type="rgb"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Sekolah Agama\Season 3\ISB-205 Object Oriented Programming (Praktikum)\PerpusJava\src\assets\img\Home fill - 26px icon.png"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Book List"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -192,9 +186,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Poppins" size="14" style="0"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Sekolah Agama\Season 3\ISB-205 Object Oriented Programming (Praktikum)\PerpusJava\src\assets\img\menu_15.png"/>
-                </Property>
                 <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="contentAreaFilled" type="boolean" value="false"/>
                 <Property name="focusPainted" type="boolean" value="false"/>
@@ -223,9 +214,6 @@
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="e9" green="d9" red="c3" type="rgb"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="D:\Sekolah Agama\Season 3\ISB-205 Object Oriented Programming (Praktikum)\PerpusJava\src\assets\img\Clock - 26px icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Borrowing History"/>
                 <Property name="borderPainted" type="boolean" value="false"/>
@@ -297,7 +285,7 @@
                           <Component id="jPanel3" max="32767" attributes="0"/>
                           <Component id="jPanel2" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <EmptySpace pref="42" max="32767" attributes="0"/>
                   </Group>
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">

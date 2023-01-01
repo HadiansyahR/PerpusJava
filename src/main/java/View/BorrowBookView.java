@@ -1,5 +1,6 @@
 package View;
 import Model.SideMenuPanel;
+import Model.User;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,7 +11,8 @@ import Model.SideMenuPanel;
 public class BorrowBookView extends javax.swing.JFrame {
 
     SideMenuPanel sp;
-
+    User user;
+    
     public BorrowBookView() {
 
         initComponents();
@@ -24,7 +26,22 @@ public class BorrowBookView extends javax.swing.JFrame {
         sp.setResponsiveMinWidth(600);
 
     }
+    
+    //bikin constructor baru kaya gini
+    public BorrowBookView(User user) {
+        //tambah ini
+        this.user = user;
+        initComponents();
+        sp = new SideMenuPanel(this);
+        sp.setMain(mainPanel);
+        sp.setSide(sidebar);
+        sp.setMinWidth(55);
+        sp.setMaxWidth(150);
+        sp.setMainAnimation(true);
+        sp.setSpeed(4);
+        sp.setResponsiveMinWidth(600);
 
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

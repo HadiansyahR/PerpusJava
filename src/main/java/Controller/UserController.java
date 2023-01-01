@@ -26,7 +26,6 @@ public class UserController {
     String query = "";
   
     public boolean Login(String username, String password){
-        BookListView bookListView = new BookListView();
         ManageBookView manageBookView = new ManageBookView();
         
         ConnectionManager conMan = new ConnectionManager();
@@ -34,6 +33,8 @@ public class UserController {
         
         Boolean loginStatus = false;
         query = "SELECT * FROM user WHERE username ='"+username+"'"+" AND password = '"+password+"'";
+        //add baris dibawah
+        User userLogin = new User();
         
         try{
             Statement stm = con.createStatement();
@@ -48,6 +49,12 @@ public class UserController {
                     
                 }else if(username.equals(rs.getString("username")) && password.equals(rs.getString("password"))){
                     loginStatus = true;
+                    
+                    userLogin.setUser_id(rs.getString("user_id"));
+                    userLogin.setUsername(rs.getString("username"));
+                    userLogin.setPassword(rs.getString("password"));
+                    //add baris dibawah
+                    BookListView bookListView = new BookListView(userLogin);
                     bookListView.setVisible(true);
                     
                 }

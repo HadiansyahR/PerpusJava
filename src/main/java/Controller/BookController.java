@@ -18,7 +18,6 @@ import java.util.Scanner;
  * @author atha
  */
 public class BookController {
-    Scanner sc = new Scanner(System.in);
     ConnectionManager conMan = new ConnectionManager();
     Connection con = conMan.LogOn();
     

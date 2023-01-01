@@ -45,18 +45,18 @@ public class ManageBookView extends javax.swing.JFrame {
     }
     
        public final void getData(){
-        DefaultTableModel dtm = (DefaultTableModel) bookTable.getModel();
+       DefaultTableModel dtm = (DefaultTableModel) bookTable.getModel();
         
-        dtm.setRowCount(0);
-        
-        List<Book> listBook = conBook.showBook();
-        String[] data = new String[5];
-        for(Book book : listBook){
-            data[0] = book.getBook_id();
-            data[1] = book.getBook_name();
-            data[2] = book.getBook_genre();
-            data[3] = Integer.toString(book.getQuantity());
-            dtm.addRow(data);
+       dtm.setRowCount(0);
+       
+       List<Book> listBook = conBook.showBook();
+       String[] data = new String[5];
+       for(Book book : listBook){
+           data[0] = book.getBook_id();
+           data[1] = book.getBook_name();
+           data[2] = book.getBook_genre();
+           data[3] = Integer.toString(book.getQuantity());
+           dtm.addRow(data);
         }
     }
     

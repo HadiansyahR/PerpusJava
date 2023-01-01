@@ -1,5 +1,17 @@
 package View;
+import Controller.TransactionController;
 import Model.SideMenuPanel;
+import Model.Transaction;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,7 +22,9 @@ import Model.SideMenuPanel;
 public class ManageTransaction extends javax.swing.JFrame {
 
     SideMenuPanel sp;
-
+    private DefaultTableModel model;
+    TransactionController conTrans = new TransactionController();
+    Date date;
     public ManageTransaction() {
 
         initComponents();
@@ -22,9 +36,54 @@ public class ManageTransaction extends javax.swing.JFrame {
         sp.setMainAnimation(true);
         sp.setSpeed(4);
         sp.setResponsiveMinWidth(600);
-
+        
+        groupButton();
+        model = new DefaultTableModel();
+        tblTransaction.setModel(model);
+        
+        model.addColumn("ID");
+        model.addColumn("User ID");
+        model.addColumn("Book ID");
+        model.addColumn("Borrow Date");
+        model.addColumn("Return Date");
+        model.addColumn("Return Status");
+        
+        getData();
     }
-
+    
+    ButtonGroup bg1 = new ButtonGroup();
+    
+    private void groupButton(){
+        bg1.add(rbYes);
+        bg1.add(rbNo);
+    }
+    
+    public final void getData(){
+        DefaultTableModel dtm = (DefaultTableModel) tblTransaction.getModel();
+        
+        dtm.setRowCount(0);
+        
+        List<Transaction> listTrans = conTrans.showTransactionAdmin();
+        String[] data = new String[6];
+        for(Transaction trans : listTrans){
+            data[0] = Integer.toString(trans.getTransaction_id());
+            data[1] = trans.getUser_id();
+            data[2] = trans.getBook_id();
+            data[3] = trans.getBorrow_date();
+            data[4] = trans.getReturn_date();
+            data[5] = Integer.toString(trans.getReturn_status());
+            
+            dtm.addRow(data);
+        }
+    }
+    
+//    private void clearData(){
+//        txtTransID.setText("");
+//        txtUsername.setText("");
+//        txtBookName.setText("");
+//        txtBorrowDate.setText("");
+//        calReturnDate.setDateFormatString("yyyy-mm-dd");
+//    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,23 +100,23 @@ public class ManageTransaction extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblTransaction = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtTransID = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        txtBookName = new javax.swing.JTextField();
+        btnSubmit = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        calReturnDate = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        rbYes = new javax.swing.JRadioButton();
+        rbNo = new javax.swing.JRadioButton();
+        txtUsername = new javax.swing.JTextField();
+        txtBorrowDate = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,7 +126,6 @@ public class ManageTransaction extends javax.swing.JFrame {
 
         Borrowbook.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Borrowbook.setForeground(new java.awt.Color(195, 217, 233));
-        Borrowbook.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Person - 26px icon.png")); // NOI18N
         Borrowbook.setBorderPainted(false);
         Borrowbook.setContentAreaFilled(false);
         Borrowbook.setFocusPainted(false);
@@ -87,7 +145,6 @@ public class ManageTransaction extends javax.swing.JFrame {
 
         Booklist.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Booklist.setForeground(new java.awt.Color(195, 217, 233));
-        Booklist.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Home fill - 26px icon.png")); // NOI18N
         Booklist.setText("Book List");
         Booklist.setBorderPainted(false);
         Booklist.setContentAreaFilled(false);
@@ -106,7 +163,6 @@ public class ManageTransaction extends javax.swing.JFrame {
 
         hamburger.setBackground(new java.awt.Color(34, 40, 47));
         hamburger.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        hamburger.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\menu_15.png")); // NOI18N
         hamburger.setBorderPainted(false);
         hamburger.setContentAreaFilled(false);
         hamburger.setFocusPainted(false);
@@ -130,7 +186,6 @@ public class ManageTransaction extends javax.swing.JFrame {
 
         Borrowbook1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Borrowbook1.setForeground(new java.awt.Color(195, 217, 233));
-        Borrowbook1.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\settings (Custom).png")); // NOI18N
         Borrowbook1.setBorderPainted(false);
         Borrowbook1.setContentAreaFilled(false);
         Borrowbook1.setFocusPainted(false);
@@ -215,7 +270,7 @@ public class ManageTransaction extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTransaction.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -226,7 +281,12 @@ public class ManageTransaction extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tblTransaction.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTransactionMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblTransaction);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -261,13 +321,14 @@ public class ManageTransaction extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Book Detail");
 
-        jTextField2.setBackground(new java.awt.Color(249, 249, 249));
-        jTextField2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(196, 196, 196));
-        jTextField2.setText("ID");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtTransID.setEditable(false);
+        txtTransID.setBackground(new java.awt.Color(249, 249, 249));
+        txtTransID.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        txtTransID.setForeground(new java.awt.Color(196, 196, 196));
+        txtTransID.setText("ID");
+        txtTransID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtTransIDActionPerformed(evt);
             }
         });
 
@@ -275,32 +336,33 @@ public class ManageTransaction extends javax.swing.JFrame {
         jLabel3.setText("ID:");
 
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel4.setText("Username:");
+        jLabel4.setText("User ID");
 
         jLabel5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel5.setText("Bookname:");
+        jLabel5.setText("Book ID");
 
         jLabel6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel6.setText("Borrow Date");
 
-        jTextField4.setBackground(new java.awt.Color(249, 249, 249));
-        jTextField4.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(196, 196, 196));
-        jTextField4.setText("Bookname");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        txtBookName.setEditable(false);
+        txtBookName.setBackground(new java.awt.Color(249, 249, 249));
+        txtBookName.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        txtBookName.setForeground(new java.awt.Color(196, 196, 196));
+        txtBookName.setText("Book ID");
+        txtBookName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                txtBookNameActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(71, 103, 237));
-        jButton3.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(249, 249, 249));
-        jButton3.setText("Clear");
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnSubmit.setBackground(new java.awt.Color(71, 103, 237));
+        btnSubmit.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        btnSubmit.setForeground(new java.awt.Color(249, 249, 249));
+        btnSubmit.setText("Submit");
+        btnSubmit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnSubmitActionPerformed(evt);
             }
         });
 
@@ -310,27 +372,29 @@ public class ManageTransaction extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jLabel8.setText("Approval Status");
 
-        jRadioButton1.setText("Yes");
+        rbYes.setText("Yes");
 
-        jRadioButton2.setText("No");
+        rbNo.setText("No");
 
-        jTextField5.setBackground(new java.awt.Color(249, 249, 249));
-        jTextField5.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(196, 196, 196));
-        jTextField5.setText("Username");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        txtUsername.setEditable(false);
+        txtUsername.setBackground(new java.awt.Color(249, 249, 249));
+        txtUsername.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(196, 196, 196));
+        txtUsername.setText("User ID");
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                txtUsernameActionPerformed(evt);
             }
         });
 
-        jTextField6.setBackground(new java.awt.Color(249, 249, 249));
-        jTextField6.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTextField6.setForeground(new java.awt.Color(196, 196, 196));
-        jTextField6.setText("Borrow Date");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtBorrowDate.setEditable(false);
+        txtBorrowDate.setBackground(new java.awt.Color(249, 249, 249));
+        txtBorrowDate.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        txtBorrowDate.setForeground(new java.awt.Color(196, 196, 196));
+        txtBorrowDate.setText("Borrow Date");
+        txtBorrowDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtBorrowDateActionPerformed(evt);
             }
         });
 
@@ -345,40 +409,38 @@ public class ManageTransaction extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7))
+                            .addComponent(jLabel8)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(rbYes)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rbNo)
+                            .addGap(0, 0, Short.MAX_VALUE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTransID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(18, 18, Short.MAX_VALUE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel8)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jRadioButton1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jRadioButton2))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGap(0, 0, Short.MAX_VALUE)))
-                            .addGap(14, 14, 14))))
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addGap(43, 43, 43)))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtBookName, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(calReturnDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtBorrowDate, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addGap(0, 25, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -388,31 +450,31 @@ public class ManageTransaction extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTransID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBookName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtBorrowDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(calReturnDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rbYes)
+                    .addComponent(rbNo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
         );
 
@@ -443,7 +505,7 @@ public class ManageTransaction extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
             .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(mainPanelLayout.createSequentialGroup()
                     .addGap(33, 33, 33)
@@ -503,29 +565,89 @@ public class ManageTransaction extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtTransIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTransIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtTransIDActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void txtBookNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBookNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_txtBookNameActionPerformed
 
     private void Borrowbook1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrowbook1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Borrowbook1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        Boolean update = false;
+        int i = tblTransaction.getSelectedRow();
+        int stat = 0;
+        if(i == 1){
+            JOptionPane.showMessageDialog(btnSubmit, "Harap pilih salah satu data!",
+                    "Warning!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if(rbYes.isSelected()){
+            stat = 1;
+        }else if(rbNo.isSelected()){
+            stat = 0;
+        }
+        
+        date = calReturnDate.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String dt = sdf.format(date);
+        
+        update = conTrans.ManageTransaction(Integer.parseInt(txtTransID.getText()), dt, stat);
+        if(update){
+            JOptionPane.showMessageDialog(btnSubmit, "Update success");
+            getData();
+        }else{
+            JOptionPane.showMessageDialog(btnSubmit, "Update Failed");
+            getData();
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtBorrowDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBorrowDateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtBorrowDateActionPerformed
+
+    private void tblTransactionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblTransactionMouseClicked
+        int i = tblTransaction.getSelectedRow();
+        
+        TableModel model = tblTransaction.getModel();
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date dt = calReturnDate.getDate();
+        try
+        {
+            dt = sdf.parse(model.getValueAt(i, 4).toString());
+        } 
+        catch (ParseException ex)
+        {
+            Logger.getLogger(ManageTransaction.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        txtTransID.setText(model.getValueAt(i, 0).toString());
+        txtUsername.setText(model.getValueAt(i, 1).toString());
+        txtBookName.setText(model.getValueAt(i,2).toString());
+        txtBorrowDate.setText(model.getValueAt(i, 3).toString());
+        calReturnDate.setDate(dt);
+        String status = model.getValueAt(i, 4).toString();
+        
+        switch (status){
+            case "0":
+                rbYes.setSelected(true);
+                break;
+            case "1":
+                rbNo.setSelected(true);
+                break;
+        }
+        
+    }//GEN-LAST:event_tblTransactionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -597,10 +719,10 @@ public class ManageTransaction extends javax.swing.JFrame {
     private javax.swing.JButton Booklist;
     private javax.swing.JButton Borrowbook;
     private javax.swing.JButton Borrowbook1;
+    private javax.swing.JButton btnSubmit;
+    private com.toedter.calendar.JDateChooser calReturnDate;
     private javax.swing.JButton hamburger;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -613,16 +735,16 @@ public class ManageTransaction extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JRadioButton rbNo;
+    private javax.swing.JRadioButton rbYes;
     private javax.swing.JPanel sidebar;
+    private javax.swing.JTable tblTransaction;
+    private javax.swing.JTextField txtBookName;
+    private javax.swing.JTextField txtBorrowDate;
+    private javax.swing.JTextField txtTransID;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package View;
 import Model.SideMenuPanel;
+import Model.User;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,9 +11,26 @@ import Model.SideMenuPanel;
 public class BookListView extends javax.swing.JFrame {
 
     SideMenuPanel sp;
-
+    //add baris dibawah
+    User user;
+    
     public BookListView() {
 
+        initComponents();
+        sp = new SideMenuPanel(this);
+        sp.setMain(mainPanel);
+        sp.setSide(sidebar);
+        sp.setMinWidth(55);
+        sp.setMaxWidth(150);
+        sp.setMainAnimation(true);
+        sp.setSpeed(4);
+        sp.setResponsiveMinWidth(600);
+
+    }
+    
+    //bikin constructor baru kaya gini
+    public BookListView(User user) {
+        this.user = user;
         initComponents();
         sp = new SideMenuPanel(this);
         sp.setMain(mainPanel);
@@ -307,7 +325,8 @@ public class BookListView extends javax.swing.JFrame {
     }//GEN-LAST:event_HistoryActionPerformed
 
     private void BooklistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BooklistActionPerformed
-        // TODO add your handling code here:
+//        BookListView bookListView = new BookListView(user);
+//        bookListView.setVisible(true);
     }//GEN-LAST:event_BooklistActionPerformed
 
     private void BorrowbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowbookActionPerformed
