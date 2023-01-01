@@ -39,7 +39,7 @@ public class BorrowBookView extends javax.swing.JFrame {
         sp.setMaxWidth(150);
         sp.setMainAnimation(true);
         sp.setSpeed(4);
-        sp.setResponsiveMinWidth(600);
+        sp.setResponsiveMinWidth(601);
 
     }
     @SuppressWarnings("unchecked")
