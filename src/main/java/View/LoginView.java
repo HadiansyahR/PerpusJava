@@ -8,12 +8,12 @@ package View;
  *
  * @author Dreamvalian
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class LoginView extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public LoginView() {
         initComponents();
     }
 
@@ -27,20 +27,188 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Leftside = new javax.swing.JPanel();
+        Header = new javax.swing.JLabel();
+        Headline = new javax.swing.JLabel();
+        Subtitle = new javax.swing.JLabel();
+        EmailTitle = new javax.swing.JLabel();
+        EmailForm = new javax.swing.JTextField();
+        PasswordTitle = new javax.swing.JLabel();
+        PasswordForm = new javax.swing.JPasswordField();
+        RememberMeCheckbox = new javax.swing.JCheckBox();
+        ForgotPassword = new javax.swing.JLabel();
+        LoginButton = new javax.swing.JButton();
+        RegisterButton = new javax.swing.JButton();
+        Rightside = new javax.swing.JPanel();
+        Logo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(1024, 768));
+        jPanel1.setBackground(new java.awt.Color(249, 249, 249));
+        jPanel1.setPreferredSize(new java.awt.Dimension(512, 384));
+
+        Leftside.setBackground(new java.awt.Color(249, 249, 249));
+        Leftside.setForeground(new java.awt.Color(35, 35, 35));
+        Leftside.setPreferredSize(new java.awt.Dimension(256, 384));
+
+        Header.setFont(new java.awt.Font("Poppins", 1, 12)); // NOI18N
+        Header.setText("• Lbro");
+
+        Headline.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        Headline.setText("Hey there, welcome back!");
+
+        Subtitle.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        Subtitle.setForeground(new java.awt.Color(145, 145, 145));
+        Subtitle.setText("Welcome back! Please enter your details.");
+
+        EmailTitle.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        EmailTitle.setForeground(new java.awt.Color(194, 200, 204));
+        EmailTitle.setText("Email");
+
+        EmailForm.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        EmailForm.setForeground(new java.awt.Color(194, 200, 204));
+        EmailForm.setText("Enter your email");
+        EmailForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailFormActionPerformed(evt);
+            }
+        });
+
+        PasswordTitle.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        PasswordTitle.setForeground(new java.awt.Color(194, 200, 204));
+        PasswordTitle.setText("Password");
+
+        PasswordForm.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        PasswordForm.setForeground(new java.awt.Color(194, 200, 204));
+        PasswordForm.setText("jPasswordField1");
+        PasswordForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordFormActionPerformed(evt);
+            }
+        });
+
+        RememberMeCheckbox.setBackground(new java.awt.Color(249, 249, 249));
+        RememberMeCheckbox.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        RememberMeCheckbox.setForeground(new java.awt.Color(194, 200, 204));
+        RememberMeCheckbox.setText("Remember me");
+        RememberMeCheckbox.setBorder(null);
+        RememberMeCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RememberMeCheckboxActionPerformed(evt);
+            }
+        });
+
+        ForgotPassword.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        ForgotPassword.setForeground(new java.awt.Color(71, 103, 237));
+        ForgotPassword.setText("Forgot Password?");
+
+        LoginButton.setBackground(new java.awt.Color(71, 103, 237));
+        LoginButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        LoginButton.setForeground(new java.awt.Color(249, 249, 249));
+        LoginButton.setText("Sign in");
+
+        RegisterButton.setBackground(new java.awt.Color(249, 249, 249));
+        RegisterButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        RegisterButton.setForeground(new java.awt.Color(71, 103, 237));
+        RegisterButton.setText("Sign Up");
+        RegisterButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
+        RegisterButton.setMaximumSize(new java.awt.Dimension(72, 25));
+        RegisterButton.setMinimumSize(new java.awt.Dimension(72, 25));
+        RegisterButton.setName(""); // NOI18N
+        RegisterButton.setPreferredSize(new java.awt.Dimension(72, 25));
+        RegisterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegisterButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout LeftsideLayout = new javax.swing.GroupLayout(Leftside);
+        Leftside.setLayout(LeftsideLayout);
+        LeftsideLayout.setHorizontalGroup(
+            LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LeftsideLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(Subtitle)
+                        .addComponent(Headline)
+                        .addComponent(EmailTitle)
+                        .addComponent(EmailForm)
+                        .addComponent(PasswordTitle)
+                        .addGroup(LeftsideLayout.createSequentialGroup()
+                            .addComponent(RememberMeCheckbox)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ForgotPassword))
+                        .addComponent(PasswordForm)
+                        .addComponent(LoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        LeftsideLayout.setVerticalGroup(
+            LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(LeftsideLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(Header)
+                .addGap(50, 50, 50)
+                .addComponent(Headline)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Subtitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EmailTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EmailForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PasswordTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PasswordForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(RememberMeCheckbox)
+                    .addComponent(ForgotPassword))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LoginButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+
+        Rightside.setBackground(new java.awt.Color(35, 35, 35));
+        Rightside.setForeground(new java.awt.Color(35, 35, 35));
+        Rightside.setPreferredSize(new java.awt.Dimension(256, 384));
+
+        Logo.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Right Column\\Graphic\\Logo\\Dark w Color.png")); // NOI18N
+
+        javax.swing.GroupLayout RightsideLayout = new javax.swing.GroupLayout(Rightside);
+        Rightside.setLayout(RightsideLayout);
+        RightsideLayout.setHorizontalGroup(
+            RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightsideLayout.createSequentialGroup()
+                .addContainerGap(85, Short.MAX_VALUE)
+                .addComponent(Logo)
+                .addContainerGap(85, Short.MAX_VALUE))
+        );
+        RightsideLayout.setVerticalGroup(
+            RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RightsideLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Logo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(Leftside, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Rightside, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addComponent(Rightside, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
+            .addComponent(Leftside, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -53,13 +221,27 @@ public class NewJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void EmailFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailFormActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailFormActionPerformed
+
+    private void RememberMeCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RememberMeCheckboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RememberMeCheckboxActionPerformed
+
+    private void PasswordFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordFormActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordFormActionPerformed
+
+    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RegisterButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,31 +254,48 @@ public class NewJFrame extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows 7".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField EmailForm;
+    private javax.swing.JLabel EmailTitle;
+    private javax.swing.JLabel ForgotPassword;
+    private javax.swing.JLabel Header;
+    private javax.swing.JLabel Headline;
+    private javax.swing.JPanel Leftside;
+    private javax.swing.JButton LoginButton;
+    private javax.swing.JLabel Logo;
+    private javax.swing.JPasswordField PasswordForm;
+    private javax.swing.JLabel PasswordTitle;
+    private javax.swing.JButton RegisterButton;
+    private javax.swing.JCheckBox RememberMeCheckbox;
+    private javax.swing.JPanel Rightside;
+    private javax.swing.JLabel Subtitle;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
