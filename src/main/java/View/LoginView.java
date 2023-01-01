@@ -191,26 +191,28 @@ public class LoginView extends javax.swing.JFrame {
                 .addComponent(LoginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RegisterButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         Rightside.setBackground(new java.awt.Color(35, 35, 35));
         Rightside.setForeground(new java.awt.Color(35, 35, 35));
         Rightside.setPreferredSize(new java.awt.Dimension(256, 384));
 
+        Logo.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Right Column\\Graphic\\Logo\\Dark w Color.png")); // NOI18N
+
         javax.swing.GroupLayout RightsideLayout = new javax.swing.GroupLayout(Rightside);
         Rightside.setLayout(RightsideLayout);
         RightsideLayout.setHorizontalGroup(
             RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightsideLayout.createSequentialGroup()
-                .addContainerGap(128, Short.MAX_VALUE)
+            .addGroup(RightsideLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
                 .addComponent(Logo)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         RightsideLayout.setVerticalGroup(
             RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RightsideLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(130, 130, 130)
                 .addComponent(Logo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

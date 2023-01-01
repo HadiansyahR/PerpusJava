@@ -55,7 +55,7 @@ public class RegisterView extends javax.swing.JFrame {
         Leftside.setPreferredSize(new java.awt.Dimension(256, 384));
 
         Headline.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
-        Headline.setText("Sign up");
+        Headline.setText("Sign up with your email");
 
         Subtitle.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
         Subtitle.setForeground(new java.awt.Color(145, 145, 145));
@@ -130,12 +130,11 @@ public class RegisterView extends javax.swing.JFrame {
                     .addComponent(PasswordForm)
                     .addComponent(AggreementCheckbox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CreateButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(LeftsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LeftsideLayout.createSequentialGroup()
-                            .addComponent(Subtitle)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(SignInText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(Headline)))
+                    .addGroup(LeftsideLayout.createSequentialGroup()
+                        .addComponent(Subtitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SignInText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Headline))
                 .addGap(24, 24, 24))
         );
         LeftsideLayout.setVerticalGroup(
@@ -159,7 +158,7 @@ public class RegisterView extends javax.swing.JFrame {
                 .addComponent(AggreementCheckbox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CreateButton)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -168,7 +167,7 @@ public class RegisterView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Leftside, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
+                .addComponent(Leftside, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
