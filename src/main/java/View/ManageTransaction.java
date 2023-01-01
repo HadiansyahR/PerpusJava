@@ -599,7 +599,7 @@ public class ManageTransaction extends javax.swing.JFrame {
         
         update = conTrans.ManageTransaction(Integer.parseInt(txtTransID.getText()), dt, stat);
         if(update){
-            JOptionPane.showMessageDialog(btnSubmit, "Update success");
+            JOptionPane.showMessageDialog(btnSubmit, "Update Success");
             getData();
         }else{
             JOptionPane.showMessageDialog(btnSubmit, "Update Failed");
