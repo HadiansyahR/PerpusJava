@@ -44,14 +44,14 @@ public class UserController {
     public boolean Register(String username, String password){
         Boolean registerStatus = false;
         query = "SELECT COUNT(*) FROM user";
-        int dataCount;
+        int dataCount = 0;
         try{
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(query);
             while(rs.next()){
-                
+                dataCount = rs.getInt("COUNT(*)");
             }
-            
+            System.out.println(dataCount);
             
             return registerStatus;
         }catch (SQLException e){
