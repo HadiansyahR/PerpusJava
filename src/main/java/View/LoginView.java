@@ -19,7 +19,6 @@ public class LoginView extends javax.swing.JFrame {
     
     UserController userCon = new UserController();
     
-    
     public LoginView() {
         initComponents();
         setLocationRelativeTo(null);
@@ -79,11 +78,16 @@ public class LoginView extends javax.swing.JFrame {
 
         EmailTitle.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
         EmailTitle.setForeground(new java.awt.Color(194, 200, 204));
-        EmailTitle.setText("Email");
+        EmailTitle.setText("Username");
 
         EmailForm.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
         EmailForm.setForeground(new java.awt.Color(194, 200, 204));
-        EmailForm.setText("Enter your email");
+        EmailForm.setText("Enter your username");
+        EmailForm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EmailFormMouseClicked(evt);
+            }
+        });
         EmailForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EmailFormActionPerformed(evt);
@@ -96,7 +100,12 @@ public class LoginView extends javax.swing.JFrame {
 
         PasswordForm.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
         PasswordForm.setForeground(new java.awt.Color(194, 200, 204));
-        PasswordForm.setText("jPasswordField1");
+        PasswordForm.setText("*****");
+        PasswordForm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PasswordFormMouseClicked(evt);
+            }
+        });
         PasswordForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PasswordFormActionPerformed(evt);
@@ -250,19 +259,42 @@ public class LoginView extends javax.swing.JFrame {
     }//GEN-LAST:event_PasswordFormActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        // TODO add your handling code here:
+        RegisterView registerView = new RegisterView();
+        dispose();
+        registerView.setVisible(true);
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         boolean status = userCon.Login(EmailForm.getText(), String.valueOf(PasswordForm.getPassword()));
         
         if(status){
-            JOptionPane.showMessageDialog(null, "Login Berhasil", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Login Success", "Pesan", JOptionPane.INFORMATION_MESSAGE);
             dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "Username atau Password yang anda masukkan salah", "Pesan", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Login Failed", "Pesan", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
+
+    private void EmailFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmailFormMouseClicked
+        String placeholder = EmailForm.getText();
+        
+        if(!placeholder.isEmpty()){
+            EmailForm.setText("");
+        }else{
+            EmailForm.setText("Enter Your Username");
+        }
+        
+    }//GEN-LAST:event_EmailFormMouseClicked
+
+    private void PasswordFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PasswordFormMouseClicked
+        String placeholder = String.valueOf(PasswordForm.getPassword());
+        
+        if(!placeholder.isEmpty()){
+            PasswordForm.setText("");
+        }else{
+            PasswordForm.setText("*****");
+        }
+    }//GEN-LAST:event_PasswordFormMouseClicked
 
     /**
      * @param args the command line arguments

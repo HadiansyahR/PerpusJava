@@ -25,17 +25,19 @@ public class ConnectionManager {
        Class.forName(Driver).newInstance();
        con = DriverManager.getConnection(url, Username, Password);
        }catch(Exception ex){
-               ex.printStackTrace();
-               }
-               return con;
+//               ex.printStackTrace();
+            ex.getMessage();
        }
+       return con;
+    }
    
    
    public void LogOff(){
        try{
            con.close();
        }catch(Exception ex){
-           ex.printStackTrace();
+//           ex.printStackTrace();
+            ex.getMessage();
        }
    }
 }

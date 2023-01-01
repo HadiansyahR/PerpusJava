@@ -12,7 +12,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 import Model.User;
 import View.BookListView;
-//import View.LoginView;
+import View.LoginView;
 import View.ManageBookView;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +22,16 @@ import java.util.List;
  * @author Acer
  */
 public class UserController {
-    Scanner sc = new Scanner(System.in);
-    ConnectionManager conMan = new ConnectionManager();
-    Connection con = conMan.LogOn();
-    
-//    LoginView loginView = new LoginView();
-    BookListView bookListView = new BookListView();
-    ManageBookView manageBookView = new ManageBookView();
     
     String query = "";
   
     public boolean Login(String username, String password){
+        BookListView bookListView = new BookListView();
+        ManageBookView manageBookView = new ManageBookView();
+        
+        ConnectionManager conMan = new ConnectionManager();
+        Connection con = conMan.LogOn();
+        
         Boolean loginStatus = false;
         query = "SELECT * FROM user WHERE username ='"+username+"'"+" AND password = '"+password+"'";
         
@@ -60,11 +59,15 @@ public class UserController {
         }catch (SQLException e){
             e.getMessage();
         }
-        
+        conMan.LogOff();
         return loginStatus;
     }
     
     public boolean Register(String username, String password){
+        ConnectionManager conMan = new ConnectionManager();
+        Connection con = conMan.LogOn();
+        LoginView loginView = new LoginView();
+        
         Boolean registerStatus = false;
         
         query = "SELECT * FROM user";
@@ -109,8 +112,8 @@ public class UserController {
         
         for (User user : listUser){
             if(user.getUsername().equals(username)){
-                System.out.println("Username sudah ada");
                 registerStatus = false;
+                break;
             }
             else{
                 query = "INSERT INTO user VALUES('"+user_id+"', '"+username+"', '"+password+"')";
@@ -120,6 +123,8 @@ public class UserController {
 
                     if(rowAffected > 0){
                         registerStatus = true;
+                        loginView.setVisible(true);
+                        
                     }else{
                         registerStatus = false;
                     }   
@@ -129,6 +134,7 @@ public class UserController {
                 }
             }
         }
+        conMan.LogOff();
         return registerStatus;
     }
 }
