@@ -81,9 +81,9 @@ public class ManageBookView extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        searchButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         bookTable = new javax.swing.JTable();
+        SearchButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
@@ -93,11 +93,11 @@ public class ManageBookView extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtBookName = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
-        updateButton = new javax.swing.JButton();
-        clearButton = new javax.swing.JButton();
+        cbGenre = new javax.swing.JComboBox<>();
         createButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        cbGenre = new javax.swing.JComboBox<>();
+        updateButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -241,16 +241,6 @@ public class ManageBookView extends javax.swing.JFrame {
             }
         });
 
-        searchButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        searchButton.setForeground(new java.awt.Color(71, 103, 237));
-        searchButton.setText("Search");
-        searchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
-        searchButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchButtonActionPerformed(evt);
-            }
-        });
-
         bookTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -269,19 +259,29 @@ public class ManageBookView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(bookTable);
 
+        SearchButton.setBackground(new java.awt.Color(249, 249, 249));
+        SearchButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        SearchButton.setForeground(new java.awt.Color(71, 103, 237));
+        SearchButton.setText("Search");
+        SearchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
+        SearchButton.setMaximumSize(new java.awt.Dimension(72, 25));
+        SearchButton.setMinimumSize(new java.awt.Dimension(72, 25));
+        SearchButton.setName(""); // NOI18N
+        SearchButton.setPreferredSize(new java.awt.Dimension(72, 25));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,10 +289,10 @@ public class ManageBookView extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchButton))
+                    .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(249, 249, 249));
@@ -344,33 +344,15 @@ public class ManageBookView extends javax.swing.JFrame {
             }
         });
 
-        updateButton.setBackground(new java.awt.Color(71, 103, 237));
-        updateButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        updateButton.setForeground(new java.awt.Color(249, 249, 249));
-        updateButton.setText("Update");
-        updateButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
-        updateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateButtonActionPerformed(evt);
-            }
-        });
-
-        clearButton.setBackground(new java.awt.Color(71, 103, 237));
-        clearButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        clearButton.setForeground(new java.awt.Color(249, 249, 249));
-        clearButton.setText("Clear");
-        clearButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
-        clearButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clearButtonActionPerformed(evt);
-            }
-        });
+        cbGenre.setBackground(new java.awt.Color(249, 249, 249));
+        cbGenre.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        cbGenre.setForeground(new java.awt.Color(196, 196, 196));
+        cbGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fiction", "Biography", "Education", "Technology" }));
 
         createButton.setBackground(new java.awt.Color(71, 103, 237));
         createButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         createButton.setForeground(new java.awt.Color(249, 249, 249));
         createButton.setText("Create");
-        createButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
         createButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createButtonActionPerformed(evt);
@@ -381,33 +363,43 @@ public class ManageBookView extends javax.swing.JFrame {
         deleteButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         deleteButton.setForeground(new java.awt.Color(249, 249, 249));
         deleteButton.setText("Delete");
-        deleteButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
             }
         });
 
-        cbGenre.setBackground(new java.awt.Color(249, 249, 249));
-        cbGenre.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        cbGenre.setForeground(new java.awt.Color(196, 196, 196));
-        cbGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fiction", "Biography", "Education", "Technology" }));
+        updateButton.setBackground(new java.awt.Color(71, 103, 237));
+        updateButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        updateButton.setForeground(new java.awt.Color(249, 249, 249));
+        updateButton.setText("Update");
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
+        clearButton.setBackground(new java.awt.Color(71, 103, 237));
+        clearButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        clearButton.setForeground(new java.awt.Color(249, 249, 249));
+        clearButton.setText("Clear");
+        clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(82, 82, 82))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(8, 8, 8)
-                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -421,12 +413,16 @@ public class ManageBookView extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(txtBookName, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(cbGenre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 34, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(82, 82, 82))
+                            .addComponent(cbGenre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+                            .addComponent(createButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(updateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(clearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(0, 28, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -449,13 +445,15 @@ public class ManageBookView extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createButton)
+                    .addComponent(updateButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updateButton)
-                    .addComponent(createButton)
                     .addComponent(deleteButton)
                     .addComponent(clearButton))
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Poppins SemiBold", 1, 24)); // NOI18N
@@ -505,7 +503,7 @@ public class ManageBookView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -541,10 +539,6 @@ public class ManageBookView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchButtonActionPerformed
-
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
 //        txtID.setEditable(false);
@@ -568,33 +562,26 @@ public class ManageBookView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtQuantityActionPerformed
 
-    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-        // TODO add your handling code here:
-        int i = bookTable.getSelectedRow();
-        if(i == 1){
-            JOptionPane.showMessageDialog(updateButton, "Harap pilih salah satu data!",
-                    "Warning!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        conBook.updateBook(txtID.getText(), txtBookName.getText(), 
-                (String) cbGenre.getSelectedItem(), Integer.parseInt(txtQuantity.getText()));
-        
-        JOptionPane.showMessageDialog(updateButton, "Data berhasil diupdate");
-        getData();
-    }//GEN-LAST:event_updateButtonActionPerformed
-
     private void Borrowbook1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrowbook1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Borrowbook1ActionPerformed
 
-    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+    private void bookTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookTableMouseClicked
         // TODO add your handling code here:
-        clearData();
-    }//GEN-LAST:event_clearButtonActionPerformed
+//        txtID.setEditable(false);
+        
+        int i = bookTable.getSelectedRow();
+        
+        TableModel model = bookTable.getModel();
+        
+        txtID.setText(model.getValueAt(i,0).toString());
+        txtBookName.setText(model.getValueAt(i,1).toString());
+        cbGenre.setSelectedItem((String)model.getValueAt(i, 2).toString());
+        txtQuantity.setText(model.getValueAt(i,3).toString());
+       
+    }//GEN-LAST:event_bookTableMouseClicked
 
     private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
-        // TODO add your handling code here:
         boolean hasil = conBook.insertBook(txtID.getText(), 
                 txtBookName.getText(), (String) cbGenre.getSelectedItem(), 
                 Integer.parseInt(txtQuantity.getText()));
@@ -622,10 +609,18 @@ public class ManageBookView extends javax.swing.JFrame {
         getData();
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void bookTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookTableMouseClicked
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
         // TODO add your handling code here:
-//        txtID.setEditable(false);
-        
+        int i = bookTable.getSelectedRow();
+        if(i == 1){
+            JOptionPane.showMessageDialog(updateButton, "Harap pilih salah satu data!",
+                    "Warning!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    }//GEN-LAST:event_updateButtonActionPerformed
+
+    private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
+        // TODO add your handling code here:
         int i = bookTable.getSelectedRow();
         
         TableModel model = bookTable.getModel();
@@ -634,8 +629,8 @@ public class ManageBookView extends javax.swing.JFrame {
         txtBookName.setText(model.getValueAt(i,1).toString());
         cbGenre.setSelectedItem((String)model.getValueAt(i, 2).toString());
         txtQuantity.setText(model.getValueAt(i,3).toString());
-       
-    }//GEN-LAST:event_bookTableMouseClicked
+        
+    }//GEN-LAST:event_clearButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -691,6 +686,7 @@ public class ManageBookView extends javax.swing.JFrame {
     private javax.swing.JButton Booklist;
     private javax.swing.JButton Borrowbook;
     private javax.swing.JButton Borrowbook1;
+    private javax.swing.JButton SearchButton;
     private javax.swing.JTable bookTable;
     private javax.swing.JComboBox<String> cbGenre;
     private javax.swing.JButton clearButton;
@@ -710,7 +706,6 @@ public class ManageBookView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel mainPanel;
-    private javax.swing.JButton searchButton;
     private javax.swing.JPanel sidebar;
     private javax.swing.JTextField txtBookName;
     private javax.swing.JTextField txtID;

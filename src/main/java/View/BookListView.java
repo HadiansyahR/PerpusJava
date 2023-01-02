@@ -58,9 +58,9 @@ public class BookListView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        SearchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,7 +69,6 @@ public class BookListView extends javax.swing.JFrame {
 
         Borrowbook.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Borrowbook.setForeground(new java.awt.Color(195, 217, 233));
-        Borrowbook.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Email fill - 26px icon.png")); // NOI18N
         Borrowbook.setText("Borrow Book");
         Borrowbook.setBorderPainted(false);
         Borrowbook.setContentAreaFilled(false);
@@ -89,7 +88,6 @@ public class BookListView extends javax.swing.JFrame {
 
         Booklist.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Booklist.setForeground(new java.awt.Color(195, 217, 233));
-        Booklist.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Home fill - 26px icon.png")); // NOI18N
         Booklist.setText("Book List");
         Booklist.setBorderPainted(false);
         Booklist.setContentAreaFilled(false);
@@ -108,7 +106,6 @@ public class BookListView extends javax.swing.JFrame {
 
         hamburger.setBackground(new java.awt.Color(34, 40, 47));
         hamburger.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        hamburger.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\menu_15.png")); // NOI18N
         hamburger.setBorderPainted(false);
         hamburger.setContentAreaFilled(false);
         hamburger.setFocusPainted(false);
@@ -127,7 +124,6 @@ public class BookListView extends javax.swing.JFrame {
 
         History.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         History.setForeground(new java.awt.Color(195, 217, 233));
-        History.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Clock - 26px icon.png")); // NOI18N
         History.setText("Borrowing History");
         History.setBorderPainted(false);
         History.setContentAreaFilled(false);
@@ -210,16 +206,6 @@ public class BookListView extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(71, 103, 237));
-        jButton1.setText("Search");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -233,6 +219,16 @@ public class BookListView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        SearchButton.setBackground(new java.awt.Color(249, 249, 249));
+        SearchButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        SearchButton.setForeground(new java.awt.Color(71, 103, 237));
+        SearchButton.setText("Search");
+        SearchButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(71, 103, 237)));
+        SearchButton.setMaximumSize(new java.awt.Dimension(72, 25));
+        SearchButton.setMinimumSize(new java.awt.Dimension(72, 25));
+        SearchButton.setName(""); // NOI18N
+        SearchButton.setPreferredSize(new java.awt.Dimension(72, 25));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -243,7 +239,7 @@ public class BookListView extends javax.swing.JFrame {
                         .addGap(185, 185, 185)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -255,7 +251,7 @@ public class BookListView extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -282,7 +278,7 @@ public class BookListView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -296,7 +292,7 @@ public class BookListView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -336,10 +332,6 @@ public class BookListView extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -383,8 +375,8 @@ public class BookListView extends javax.swing.JFrame {
     private javax.swing.JButton Booklist;
     private javax.swing.JButton Borrowbook;
     private javax.swing.JButton History;
+    private javax.swing.JButton SearchButton;
     private javax.swing.JButton hamburger;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
