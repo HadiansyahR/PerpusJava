@@ -1,6 +1,10 @@
 package View;
+import Controller.BookController;
+import Model.Book;
 import Model.SideMenuPanel;
 import Model.User;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,6 +17,9 @@ public class BookListView extends javax.swing.JFrame {
     SideMenuPanel sp;
     //add baris dibawah
     User user;
+    private DefaultTableModel model;
+
+    BookController conBook = new BookController();
     
     public BookListView() {
 
@@ -25,8 +32,51 @@ public class BookListView extends javax.swing.JFrame {
         sp.setMainAnimation(true);
         sp.setSpeed(4);
         sp.setResponsiveMinWidth(600);
-
+        
+        model = new DefaultTableModel();
+        bookTable.setModel(model);
+        
+        model.addColumn("ID");
+        model.addColumn("Book Name");
+        model.addColumn("Book Genre");
+        model.addColumn("Quantity");
+        
+        getData();
     }
+    
+    public final void getData(){
+        DefaultTableModel dtm = (DefaultTableModel) bookTable.getModel();
+        
+        dtm.setRowCount(0);
+        
+        List<Book> listBook = conBook.showBook();
+        String[] data = new String[5];
+        for(Book book : listBook){
+            data[0] = book.getBook_id();
+            data[1] = book.getBook_name();
+            data[2] = book.getBook_genre();
+            data[3] = Integer.toString(book.getQuantity());
+            dtm.addRow(data);
+        }
+    }
+
+    
+    public final void searchData(String key){
+         DefaultTableModel dtm = (DefaultTableModel) bookTable.getModel();
+         
+         dtm.setRowCount(0);
+         
+        List<Book> listBook = conBook.searchBook(key);
+        String[] data = new String[5];
+        for(Book book : listBook){
+            data[0] = book.getBook_id();
+            data[1] = book.getBook_name();
+            data[2] = book.getBook_genre();
+            data[3] = Integer.toString(book.getQuantity());
+            dtm.addRow(data);
+        }
+     }
+
     
     //bikin constructor baru kaya gini
     public BookListView(User user) {
@@ -40,7 +90,16 @@ public class BookListView extends javax.swing.JFrame {
         sp.setMainAnimation(true);
         sp.setSpeed(4);
         sp.setResponsiveMinWidth(600);
-
+        
+        model = new DefaultTableModel();
+        bookTable.setModel(model);
+        
+        model.addColumn("ID");
+        model.addColumn("Book Name");
+        model.addColumn("Book Genre");
+        model.addColumn("Quantity");
+        
+        getData();
     }
 
     @SuppressWarnings("unchecked")
@@ -57,9 +116,9 @@ public class BookListView extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        bookTable = new javax.swing.JTable();
         SearchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,16 +256,21 @@ public class BookListView extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(249, 249, 249));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(194, 200, 204));
-        jTextField1.setText("Genre, author, or book name");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        txtSearch.setForeground(new java.awt.Color(194, 200, 204));
+        txtSearch.setText("Genre, author, or book name");
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        bookTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -217,7 +281,7 @@ public class BookListView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(bookTable);
 
         SearchButton.setBackground(new java.awt.Color(249, 249, 249));
         SearchButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -237,7 +301,7 @@ public class BookListView extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(185, 185, 185)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -250,7 +314,7 @@ public class BookListView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,7 +342,7 @@ public class BookListView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -318,6 +382,9 @@ public class BookListView extends javax.swing.JFrame {
 
     private void HistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistoryActionPerformed
         // TODO add your handling code here:
+        BorrowingHistoryView borrowingHistoryView = new BorrowingHistoryView(user);
+        dispose();
+        borrowingHistoryView.setVisible(true);
     }//GEN-LAST:event_HistoryActionPerformed
 
     private void BooklistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BooklistActionPerformed
@@ -326,12 +393,23 @@ public class BookListView extends javax.swing.JFrame {
     }//GEN-LAST:event_BooklistActionPerformed
 
     private void BorrowbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowbookActionPerformed
-        // TODO add your handling code here:
+        BorrowBookView borrowBookView = new BorrowBookView(user);
+        dispose();
+        borrowBookView.setVisible(true);
     }//GEN-LAST:event_BorrowbookActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        // TODO add your handling code here:
+        if(txtSearch.getText().equals("")){
+            getData();
+        } else {
+            searchData(txtSearch.getText());
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -376,15 +454,15 @@ public class BookListView extends javax.swing.JFrame {
     private javax.swing.JButton Borrowbook;
     private javax.swing.JButton History;
     private javax.swing.JButton SearchButton;
+    private javax.swing.JTable bookTable;
     private javax.swing.JButton hamburger;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel sidebar;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

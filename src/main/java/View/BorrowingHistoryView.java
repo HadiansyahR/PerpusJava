@@ -1,5 +1,10 @@
 package View;
+import Controller.TransactionController;
 import Model.SideMenuPanel;
+import Model.Transaction;
+import Model.User;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,6 +15,11 @@ import Model.SideMenuPanel;
 public class BorrowingHistoryView extends javax.swing.JFrame {
 
     SideMenuPanel sp;
+    private DefaultTableModel model;
+    TransactionController conTrans = new TransactionController();
+//    BookController conBook = new BookController();
+//    Date date;
+    User user;
 
     public BorrowingHistoryView() {
 
@@ -22,7 +32,83 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
         sp.setMainAnimation(true);
         sp.setSpeed(4);
         sp.setResponsiveMinWidth(600);
+        
+         
+        model = new DefaultTableModel();
+        tableHistory.setModel(model);
+        
+        model.addColumn("ID");
+        model.addColumn("User ID");
+        model.addColumn("Book ID");
+        model.addColumn("Borrow Date");
+        model.addColumn("Return Date");
+        model.addColumn("Return Status");
+        
+        getData();
+    }
+    
+    public BorrowingHistoryView(User user) {
 
+        initComponents();
+        sp = new SideMenuPanel(this);
+        sp.setMain(mainPanel);
+        sp.setSide(sidebar);
+        sp.setMinWidth(55);
+        sp.setMaxWidth(150);
+        sp.setMainAnimation(true);
+        sp.setSpeed(4);
+        sp.setResponsiveMinWidth(600);
+        
+         
+        model = new DefaultTableModel();
+        tableHistory.setModel(model);
+        
+        model.addColumn("ID");
+        model.addColumn("User ID");
+        model.addColumn("Book ID");
+        model.addColumn("Borrow Date");
+        model.addColumn("Return Date");
+        model.addColumn("Return Status");
+        
+        getData();
+    }
+    
+     public final void searchData(String key){
+        DefaultTableModel dtm = (DefaultTableModel) tableHistory.getModel();
+         
+        dtm.setRowCount(0);
+         
+        List<Transaction> listTrans = conTrans.searchTrans(key);
+        String[] data = new String[6];
+        for(Transaction trans : listTrans){
+            data[0] = Integer.toString(trans.getTransaction_id());
+            data[1] = trans.getUser_id();
+            data[2] = trans.getBook_id();
+            data[3] = trans.getBorrow_date();
+            data[4] = trans.getReturn_date();
+            data[5] = Integer.toString(trans.getReturn_status());
+            
+            dtm.addRow(data);
+        }
+     }
+    
+    public final void getData(){
+        DefaultTableModel dtm = (DefaultTableModel) tableHistory.getModel();
+        
+        dtm.setRowCount(0);
+        
+        List<Transaction> listTrans = conTrans.showTransactionAdmin();
+        String[] data = new String[6];
+        for(Transaction trans : listTrans){
+            data[0] = Integer.toString(trans.getTransaction_id());
+            data[1] = trans.getUser_id();
+            data[2] = trans.getBook_id();
+            data[3] = trans.getBorrow_date();
+            data[4] = trans.getReturn_date();
+            data[5] = Integer.toString(trans.getReturn_status());
+            
+            dtm.addRow(data);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -39,9 +125,9 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
         mainPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableHistory = new javax.swing.JTable();
         SearchButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -51,7 +137,6 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
 
         Borrowbook.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Borrowbook.setForeground(new java.awt.Color(195, 217, 233));
-        Borrowbook.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Email fill - 26px icon.png")); // NOI18N
         Borrowbook.setText("Borrow Book");
         Borrowbook.setBorderPainted(false);
         Borrowbook.setContentAreaFilled(false);
@@ -71,7 +156,6 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
 
         Booklist.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Booklist.setForeground(new java.awt.Color(195, 217, 233));
-        Booklist.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Home fill - 26px icon.png")); // NOI18N
         Booklist.setText("Book List");
         Booklist.setBorderPainted(false);
         Booklist.setContentAreaFilled(false);
@@ -90,7 +174,6 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
 
         hamburger.setBackground(new java.awt.Color(34, 40, 47));
         hamburger.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        hamburger.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\menu_15.png")); // NOI18N
         hamburger.setBorderPainted(false);
         hamburger.setContentAreaFilled(false);
         hamburger.setFocusPainted(false);
@@ -109,7 +192,6 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
 
         History.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         History.setForeground(new java.awt.Color(195, 217, 233));
-        History.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\assets\\img\\Clock - 26px icon.png")); // NOI18N
         History.setText("Borrowing History");
         History.setBorderPainted(false);
         History.setContentAreaFilled(false);
@@ -183,16 +265,21 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(249, 249, 249));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jTextField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(194, 200, 204));
-        jTextField1.setText("Genre, author, or book name");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        txtSearch.setForeground(new java.awt.Color(194, 200, 204));
+        txtSearch.setText("Genre, author, or book name");
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -203,7 +290,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableHistory);
 
         SearchButton.setBackground(new java.awt.Color(249, 249, 249));
         SearchButton.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
@@ -223,7 +310,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(185, 185, 185)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -236,7 +323,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,7 +351,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -303,20 +390,33 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
     }//GEN-LAST:event_hamburgerActionPerformed
 
     private void HistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistoryActionPerformed
-        // TODO add your handling code here:
+//        BorrowingHistoryView borrowingHistoryView = new BorrowingHistoryView(user);
+//        dispose();
+//        borrowingHistoryView.setVisible(true);
     }//GEN-LAST:event_HistoryActionPerformed
 
     private void BooklistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BooklistActionPerformed
-        // TODO add your handling code here:
+        BookListView bookListView = new BookListView(user);
+        bookListView.setVisible(true);
     }//GEN-LAST:event_BooklistActionPerformed
 
     private void BorrowbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowbookActionPerformed
-        // TODO add your handling code here:
+        BorrowBookView borrowBookView = new BorrowBookView(user);
+        dispose();
+        borrowBookView.setVisible(true);
     }//GEN-LAST:event_BorrowbookActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        if(txtSearch.getText().equals("")){
+            getData();
+        } else {
+            searchData(txtSearch.getText());
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments
@@ -371,9 +471,9 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JPanel sidebar;
+    private javax.swing.JTable tableHistory;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }

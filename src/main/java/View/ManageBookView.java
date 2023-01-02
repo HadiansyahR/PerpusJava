@@ -621,14 +621,7 @@ public class ManageBookView extends javax.swing.JFrame {
 
     private void clearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearButtonActionPerformed
         // TODO add your handling code here:
-        int i = bookTable.getSelectedRow();
-        
-        TableModel model = bookTable.getModel();
-        
-        txtID.setText(model.getValueAt(i,0).toString());
-        txtBookName.setText(model.getValueAt(i,1).toString());
-        cbGenre.setSelectedItem((String)model.getValueAt(i, 2).toString());
-        txtQuantity.setText(model.getValueAt(i,3).toString());
+        clearData();
         
     }//GEN-LAST:event_clearButtonActionPerformed
 

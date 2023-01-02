@@ -28,10 +28,7 @@ public class TransactionController {
         List<Transaction> listTrans = new ArrayList<Transaction>();
         
         query = "SELECT * FROM transaction";
-//        query = "SELECT transaction.transaction_id, user.username, book.book_name, transaction.borrow_date, "
-//                + "transaction.return_date FROM ((user INNER JOIN transaction ON "
-//                + "user.user_id = transaction.user_id) INNER JOIN book ON transaction.book_id = book.book_id)";
-        
+                
         try{
             Statement stm = con.createStatement();
             ResultSet rs = stm.executeQuery(query);
@@ -76,5 +73,31 @@ public class TransactionController {
         return updateStatus;
     }
     
+    public List<Transaction> searchTrans(String key){
+        ConnectionManager conMan = new ConnectionManager();
+        Connection con = conMan.LogOn();
+        List<Transaction> listTrans = new ArrayList<Transaction>();
+        String query = "Select * from transaction where " +
+                "book_id LIKE '%" + key + "'";
+        
+        try{
+           Statement stm = con.createStatement();
+           ResultSet rs = stm.executeQuery(query);
+           while(rs.next()){
+               Transaction trans = new Transaction();
+               trans.setTransaction_id(rs.getInt("transaction_id"));
+               trans.setUser_id(rs.getString("user_id"));
+               trans.setBook_id(rs.getString("book_id"));
+               trans.setBorrow_date(rs.getString("borrow_date"));
+               trans.setReturn_date(rs.getString("return_date"));
+               trans.setReturn_status(rs.getInt("return_status"));
+               listTrans.add(trans);
+           }
+        }catch(Exception ex){
+            System.out.println(ex.toString());
+        }
+        
+        return listTrans;
+    }
     
 }
