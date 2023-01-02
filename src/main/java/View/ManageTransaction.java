@@ -90,11 +90,11 @@ public class ManageTransaction extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         sidebar = new javax.swing.JPanel();
-        Borrowbook = new javax.swing.JButton();
+        ManageBook = new javax.swing.JButton();
         Booklist = new javax.swing.JButton();
         hamburger = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        Borrowbook1 = new javax.swing.JButton();
+        ManageTransaction = new javax.swing.JButton();
         mainPanel = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
@@ -124,27 +124,29 @@ public class ManageTransaction extends javax.swing.JFrame {
         sidebar.setBackground(new java.awt.Color(71, 103, 237));
         sidebar.setPreferredSize(new java.awt.Dimension(60, 32));
 
-        Borrowbook.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        Borrowbook.setForeground(new java.awt.Color(195, 217, 233));
-        Borrowbook.setBorderPainted(false);
-        Borrowbook.setContentAreaFilled(false);
-        Borrowbook.setFocusPainted(false);
-        Borrowbook.setHideActionText(true);
-        Borrowbook.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        Borrowbook.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        Borrowbook.setIconTextGap(20);
-        Borrowbook.setLabel("Manage Book");
-        Borrowbook.setMargin(new java.awt.Insets(2, 0, 2, 14));
-        Borrowbook.setMinimumSize(new java.awt.Dimension(0, 35));
-        Borrowbook.setPreferredSize(new java.awt.Dimension(50, 574));
-        Borrowbook.addActionListener(new java.awt.event.ActionListener() {
+        ManageBook.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        ManageBook.setForeground(new java.awt.Color(195, 217, 233));
+        ManageBook.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\3. bookdetail.png")); // NOI18N
+        ManageBook.setBorderPainted(false);
+        ManageBook.setContentAreaFilled(false);
+        ManageBook.setFocusPainted(false);
+        ManageBook.setHideActionText(true);
+        ManageBook.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        ManageBook.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ManageBook.setIconTextGap(20);
+        ManageBook.setLabel("Manage Book");
+        ManageBook.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        ManageBook.setMinimumSize(new java.awt.Dimension(0, 35));
+        ManageBook.setPreferredSize(new java.awt.Dimension(50, 574));
+        ManageBook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BorrowbookActionPerformed(evt);
+                ManageBookActionPerformed(evt);
             }
         });
 
         Booklist.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Booklist.setForeground(new java.awt.Color(195, 217, 233));
+        Booklist.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\2. home1.png")); // NOI18N
         Booklist.setText("Book List");
         Booklist.setBorderPainted(false);
         Booklist.setContentAreaFilled(false);
@@ -163,6 +165,7 @@ public class ManageTransaction extends javax.swing.JFrame {
 
         hamburger.setBackground(new java.awt.Color(34, 40, 47));
         hamburger.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        hamburger.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\1. hamburger.png")); // NOI18N
         hamburger.setBorderPainted(false);
         hamburger.setContentAreaFilled(false);
         hamburger.setFocusPainted(false);
@@ -184,22 +187,23 @@ public class ManageTransaction extends javax.swing.JFrame {
         jLabel13.setText("<html>Lbro</html>");
         jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        Borrowbook1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        Borrowbook1.setForeground(new java.awt.Color(195, 217, 233));
-        Borrowbook1.setBorderPainted(false);
-        Borrowbook1.setContentAreaFilled(false);
-        Borrowbook1.setFocusPainted(false);
-        Borrowbook1.setHideActionText(true);
-        Borrowbook1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        Borrowbook1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        Borrowbook1.setIconTextGap(20);
-        Borrowbook1.setLabel("Manage Transaction");
-        Borrowbook1.setMargin(new java.awt.Insets(2, 0, 2, 14));
-        Borrowbook1.setMinimumSize(new java.awt.Dimension(0, 35));
-        Borrowbook1.setPreferredSize(new java.awt.Dimension(50, 574));
-        Borrowbook1.addActionListener(new java.awt.event.ActionListener() {
+        ManageTransaction.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        ManageTransaction.setForeground(new java.awt.Color(195, 217, 233));
+        ManageTransaction.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\settings.png")); // NOI18N
+        ManageTransaction.setBorderPainted(false);
+        ManageTransaction.setContentAreaFilled(false);
+        ManageTransaction.setFocusPainted(false);
+        ManageTransaction.setHideActionText(true);
+        ManageTransaction.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        ManageTransaction.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ManageTransaction.setIconTextGap(20);
+        ManageTransaction.setLabel("Manage Transaction");
+        ManageTransaction.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        ManageTransaction.setMinimumSize(new java.awt.Dimension(0, 35));
+        ManageTransaction.setPreferredSize(new java.awt.Dimension(50, 574));
+        ManageTransaction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Borrowbook1ActionPerformed(evt);
+                ManageTransactionActionPerformed(evt);
             }
         });
 
@@ -216,7 +220,7 @@ public class ManageTransaction extends javax.swing.JFrame {
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(sidebarLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(Borrowbook, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(ManageBook, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(sidebarLayout.createSequentialGroup()
                         .addContainerGap()
@@ -227,7 +231,7 @@ public class ManageTransaction extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Borrowbook1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ManageTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         sidebarLayout.setVerticalGroup(
@@ -238,9 +242,9 @@ public class ManageTransaction extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Booklist, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Borrowbook, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ManageBook, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Borrowbook1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ManageTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
@@ -551,9 +555,12 @@ public class ManageTransaction extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BooklistActionPerformed
 
-    private void BorrowbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowbookActionPerformed
+    private void ManageBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageBookActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BorrowbookActionPerformed
+        ManageBookView manageBookView = new ManageBookView();
+        dispose();
+        manageBookView.setVisible(true);
+    }//GEN-LAST:event_ManageBookActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -567,9 +574,9 @@ public class ManageTransaction extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBookNameActionPerformed
 
-    private void Borrowbook1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrowbook1ActionPerformed
+    private void ManageTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageTransactionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Borrowbook1ActionPerformed
+    }//GEN-LAST:event_ManageTransactionActionPerformed
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
@@ -711,8 +718,8 @@ public class ManageTransaction extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Booklist;
-    private javax.swing.JButton Borrowbook;
-    private javax.swing.JButton Borrowbook1;
+    private javax.swing.JButton ManageBook;
+    private javax.swing.JButton ManageTransaction;
     private javax.swing.JButton SearchButton;
     private com.toedter.calendar.JDateChooser calReturnDate;
     private javax.swing.JButton hamburger;

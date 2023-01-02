@@ -77,7 +77,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="Borrowbook" min="-2" pref="189" max="-2" attributes="0"/>
+                                      <Component id="ManageBook" min="-2" pref="189" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -94,7 +94,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="Borrowbook1" min="-2" pref="189" max="-2" attributes="0"/>
+                              <Component id="ManageTransaction" min="-2" pref="189" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -109,9 +109,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Booklist" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="Borrowbook" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="ManageBook" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="Borrowbook1" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="ManageTransaction" min="-2" pref="35" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLabel13" min="-2" pref="61" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -120,7 +120,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="Borrowbook">
+            <Component class="javax.swing.JButton" name="ManageBook">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Poppins" size="14" style="0"/>
@@ -150,7 +150,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BorrowbookActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManageBookActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Booklist">
@@ -229,7 +229,7 @@
                 <Property name="horizontalTextPosition" type="int" value="2"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="Borrowbook1">
+            <Component class="javax.swing.JButton" name="ManageTransaction">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Poppins" size="14" style="0"/>
@@ -259,7 +259,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Borrowbook1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManageTransactionActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

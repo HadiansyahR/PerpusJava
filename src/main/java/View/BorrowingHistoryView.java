@@ -137,6 +137,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
 
         Borrowbook.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Borrowbook.setForeground(new java.awt.Color(195, 217, 233));
+        Borrowbook.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\3. bookdetail.png")); // NOI18N
         Borrowbook.setText("Borrow Book");
         Borrowbook.setBorderPainted(false);
         Borrowbook.setContentAreaFilled(false);
@@ -156,6 +157,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
 
         Booklist.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         Booklist.setForeground(new java.awt.Color(195, 217, 233));
+        Booklist.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\2. home1.png")); // NOI18N
         Booklist.setText("Book List");
         Booklist.setBorderPainted(false);
         Booklist.setContentAreaFilled(false);
@@ -174,6 +176,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
 
         hamburger.setBackground(new java.awt.Color(34, 40, 47));
         hamburger.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        hamburger.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\1. hamburger.png")); // NOI18N
         hamburger.setBorderPainted(false);
         hamburger.setContentAreaFilled(false);
         hamburger.setFocusPainted(false);
@@ -192,6 +195,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
 
         History.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         History.setForeground(new java.awt.Color(195, 217, 233));
+        History.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\4. history.png")); // NOI18N
         History.setText("Borrowing History");
         History.setBorderPainted(false);
         History.setContentAreaFilled(false);
@@ -365,7 +369,7 @@ public class BorrowingHistoryView extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+            .addComponent(sidebar, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
             .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
