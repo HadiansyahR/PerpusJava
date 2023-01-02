@@ -198,7 +198,7 @@ public class LoginView extends javax.swing.JFrame {
         Rightside.setForeground(new java.awt.Color(35, 35, 35));
         Rightside.setPreferredSize(new java.awt.Dimension(256, 384));
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Dark w Color.png"))); // NOI18N
+        Logo.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\Dark w Color.png")); // NOI18N
 
         javax.swing.GroupLayout RightsideLayout = new javax.swing.GroupLayout(Rightside);
         Rightside.setLayout(RightsideLayout);

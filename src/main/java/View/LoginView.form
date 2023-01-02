@@ -318,7 +318,7 @@
             <Component class="javax.swing.JLabel" name="Logo">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Assets/Dark w Color.png"/>
+                  <Image iconType="2" name="D:\Sekolah Agama\Season 3\ISB-205 Object Oriented Programming (Praktikum)\PerpusJava\src\main\java\Assets\Dark w Color.png"/>
                 </Property>
               </Properties>
             </Component>
