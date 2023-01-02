@@ -41,6 +41,7 @@ public class BorrowBookView extends javax.swing.JFrame {
         sp.setSpeed(4);
         sp.setResponsiveMinWidth(601);
 
+        jLabel2.setText(user.getUsername());
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -455,7 +456,8 @@ public class BorrowBookView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
     private void hamburgerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hamburgerActionPerformed
         // TODO add your handling code here:
         sp.onSideMenu();

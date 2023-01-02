@@ -40,7 +40,7 @@ public class BookListView extends javax.swing.JFrame {
         sp.setMainAnimation(true);
         sp.setSpeed(4);
         sp.setResponsiveMinWidth(600);
-
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -326,7 +326,9 @@ public class BookListView extends javax.swing.JFrame {
     }//GEN-LAST:event_BooklistActionPerformed
 
     private void BorrowbookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowbookActionPerformed
-        // TODO add your handling code here:
+        BorrowBookView borrowBookView = new BorrowBookView(user);
+        dispose();
+        borrowBookView.setVisible(true);
     }//GEN-LAST:event_BorrowbookActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
