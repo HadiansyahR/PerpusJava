@@ -5,6 +5,9 @@
 package View;
 
 import Controller.UserController;
+import java.net.URL;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,8 +21,12 @@ public class LoginView extends javax.swing.JFrame {
      */
     
     UserController userCon = new UserController();
+//    java.net.URL logo = getClass().getResource("\\Assets\\Stacked.png");
+//    Icon lbro = new ImageIcon(getClass().getResource("/Assets/Stacked.png"));
     
     public LoginView() {
+//        Logo.setIcon(lbro);
+        
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -198,8 +205,6 @@ public class LoginView extends javax.swing.JFrame {
         Rightside.setForeground(new java.awt.Color(35, 35, 35));
         Rightside.setPreferredSize(new java.awt.Dimension(256, 384));
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/Dark w Color.png"))); // NOI18N
-
         javax.swing.GroupLayout RightsideLayout = new javax.swing.GroupLayout(Rightside);
         Rightside.setLayout(RightsideLayout);
         RightsideLayout.setHorizontalGroup(
@@ -207,7 +212,7 @@ public class LoginView extends javax.swing.JFrame {
             .addGroup(RightsideLayout.createSequentialGroup()
                 .addGap(84, 84, 84)
                 .addComponent(Logo)
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         RightsideLayout.setVerticalGroup(
             RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

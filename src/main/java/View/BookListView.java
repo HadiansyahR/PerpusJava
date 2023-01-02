@@ -404,11 +404,11 @@ public class BookListView extends javax.swing.JFrame {
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
-         if(txtSearch.getText().equals("")){
+        if(txtSearch.getText().equals("")){
             getData();
         } else {
             searchData(txtSearch.getText());
-         }
+        }
     }//GEN-LAST:event_txtSearchKeyReleased
 
     /**

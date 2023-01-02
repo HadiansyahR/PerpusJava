@@ -9,7 +9,9 @@ import Model.Book;
 import Model.Transaction;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -113,9 +115,16 @@ public class BookController {
     
     public boolean borrowBook(String user_id, String book_id, List<Book> listBook){
         Boolean borrowStatus = false;
+        Boolean insertStatus = false;
         String bkId = null;
+        String query;
+        
         int bookQty = 0;
-        Transaction objTrans = new Transaction();
+        int rowAffected = 0;
+        
+        LocalDate borrowDate = LocalDate.now();
+        LocalDate returnDate = LocalDate.now().plusDays(7);
+//        Transaction objTrans = new Transaction();
         
         for (Book book : listBook)
         {
@@ -126,9 +135,40 @@ public class BookController {
             }
         }
         
-        objTrans.setUser_id(book_id);
+//        objTrans.setUser_id(user_id);
         if((bookQty - 1) >= 0){
-            String query = "INSERT INTO transaction VALUES ('')";
+            query = "INSERT INTO transaction VALUES (NULL, '"+user_id+"', '"+bkId+"', '"+borrowDate+"', '"+returnDate+"', "+0+")";
+
+            try{
+                Statement stm = con.createStatement();
+                rowAffected = stm.executeUpdate(query);
+                
+                if(rowAffected > 0){
+                    insertStatus = true;
+                }else{
+                    insertStatus = false;
+                }
+            }catch(SQLException e){
+                e.getMessage();
+            }
+            
+            rowAffected = 0;
+            
+            if(insertStatus = true){
+                query = "UPDATE book SET quantity = "+ (bookQty - 1) + " WHERE book_id = '"+bkId+"'";
+                try{
+                    Statement stm = con.createStatement();
+                    rowAffected = stm.executeUpdate(query);
+
+                    if(rowAffected > 0){
+                        borrowStatus = true;
+                    }else{
+                        borrowStatus = false;
+                    }
+                }catch(SQLException e){
+                    e.getMessage();
+                }
+            }
         }
         else{
             borrowStatus = false;
