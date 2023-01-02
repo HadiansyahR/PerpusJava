@@ -205,21 +205,23 @@ public class LoginView extends javax.swing.JFrame {
         Rightside.setForeground(new java.awt.Color(35, 35, 35));
         Rightside.setPreferredSize(new java.awt.Dimension(256, 384));
 
+        Logo.setIcon(new javax.swing.ImageIcon("D:\\Sekolah Agama\\Season 3\\ISB-205 Object Oriented Programming (Praktikum)\\PerpusJava\\src\\main\\java\\Assets\\Dark w Color.png")); // NOI18N
+
         javax.swing.GroupLayout RightsideLayout = new javax.swing.GroupLayout(Rightside);
         Rightside.setLayout(RightsideLayout);
         RightsideLayout.setHorizontalGroup(
             RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(RightsideLayout.createSequentialGroup()
-                .addGap(84, 84, 84)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightsideLayout.createSequentialGroup()
+                .addContainerGap(89, Short.MAX_VALUE)
                 .addComponent(Logo)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addGap(81, 81, 81))
         );
         RightsideLayout.setVerticalGroup(
             RightsideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, RightsideLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(RightsideLayout.createSequentialGroup()
+                .addGap(144, 144, 144)
                 .addComponent(Logo)
-                .addGap(148, 148, 148))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
