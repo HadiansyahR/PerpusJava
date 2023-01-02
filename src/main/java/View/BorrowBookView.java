@@ -526,7 +526,7 @@ public class BorrowBookView extends javax.swing.JFrame {
     }//GEN-LAST:event_hamburgerActionPerformed
 
     private void HistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistoryActionPerformed
-        BorrowingHistoryView borrowingHistoryView = new BorrowingHistoryView();
+        BorrowingHistoryView borrowingHistoryView = new BorrowingHistoryView(user);
         dispose();
         borrowingHistoryView.setVisible(true);
     }//GEN-LAST:event_HistoryActionPerformed

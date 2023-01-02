@@ -382,7 +382,7 @@ public class BookListView extends javax.swing.JFrame {
 
     private void HistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistoryActionPerformed
         // TODO add your handling code here:
-        BorrowingHistoryView borrowingHistoryView = new BorrowingHistoryView();
+        BorrowingHistoryView borrowingHistoryView = new BorrowingHistoryView(user);
         dispose();
         borrowingHistoryView.setVisible(true);
     }//GEN-LAST:event_HistoryActionPerformed
